@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.openai.com https://generativelanguage.googleapis.com">
+    <title>AI-Powered Web Vulnerability Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-section">
+                <div class="icon">S</div>
+                <div class="title">AI-Powered Web Vulnerability Scanner</div>
+            </div>
+            <div class="window-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeText">Dark</span>
+                </button>
+                <button class="minimize"></button>
+                <button class="maximize"></button>
+                <button class="close"></button>
+            </div>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab active" data-section="scan-settings">Scan Settings</div>
+            <div class="tab" data-section="authentication">Authentication</div>
+            <div class="tab" data-section="advanced">Advanced</div>
+            <div class="tab" data-section="vulnerability-distribution">Vulnerability Distribution</div>
+        </div>
+
+        <div class="content">
+            <!-- Scan Settings Section -->
+            <div class="section active" id="scan-settings">
+                <div class="card">
+                    <h3>Target Configuration</h3>
+
+                    <div class="form-row">
+                        <label>Target URL:</label>
+                        <input type="url" class="target-url" value="http://testphp.vulnweb.com" id="targetUrl">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Request Delay (s):</label>
+                        <input type="text" value="0.5" id="requestDelay">
+
+                        <label>Crawl Depth:</label>
+                        <select id="crawlDepth">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>AI Provider</label>
+                            <select id="aiProvider">
+                                <option value="openai">OpenAI (GPT)</option>
+                                <option value="gemini">Google Gemini</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>API Key</label>
+                            <input type="password" id="apiKey" placeholder="sk-..." style="width: 200px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Model</label>
+                            <select id="aiModel">
+                                <!-- Options populated by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="scan-controls">
+                        <button class="btn btn-start" id="startScan">Start Scan</button>
+                        <button class="btn btn-stop" id="stopScan" disabled>Stop Scan</button>
+                    </div>
+
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="scanning-message" id="scanningMessage">Initializing scan...</div>
+                </div>
+
+                <!-- Scan Results Section -->
+                <div class="results-section">
+                    <div class="card">
+                        <h3>Real-time Scan Results</h3>
+
+                        <div class="results-area" id="resultsArea">
+                            <div id="scanOutput">AI-Powered Scanner Ready
+                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                                Enhanced Security Analysis Engine
+                                • Machine Learning-based vulnerability detection
+                                • Real-time threat assessment
+                                • Automated penetration testing
+                                • OWASP Top 10 compliance checking
+
+                                Ready to scan your target...
+                                Click "Start Scan" to begin comprehensive security analysis.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Authentication Section -->
+            <div class="section" id="authentication">
+                <div class="card">
+                    <h3>Authentication Settings</h3>
+
+                    <div class="form-row">
+                        <label>Login URL:</label>
+                        <input type="url" class="target-url" id="loginUrl" placeholder="https://example.com/login">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Username:</label>
+                        <input type="text" id="username" placeholder="Enter username">
+                    </div>
+
+                    <div class="form-row">
+                        <label>Password:</label>
+                        <input type="password" id="password" placeholder="Enter password">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Authentication Methods</h4>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="basicAuth">
+                        <label for="basicAuth">HTTP Basic Authentication</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="formAuth" checked>
+                        <label for="formAuth">Form-based Authentication</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="cookieAuth">
+                        <label for="cookieAuth">Cookie-based Session</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Section -->
+            <div class="section" id="advanced">
+                <div class="card">
+                    <h3>Network & Proxy Settings</h3>
+
+                    <div class="form-row">
+                        <label>Proxy Server:</label>
+                        <input type="text" class="target-url" id="proxyUrl" placeholder="http://proxy.example.com:8080">
+                    </div>
+
+                    <div class="form-row">
+                        <label>User Agent:</label>
+                        <input type="text" class="target-url" id="userAgent" value="Mozilla/5.0 (AI Security Scanner)">
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="enableJS" checked>
+                        <label for="enableJS">Enable JavaScript Rendering</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="followRedirects" checked>
+                        <label for="followRedirects">Follow HTTP Redirects</label>
+                    </div>
+                </div>
+
+                <div class="card owasp-list">
+                    <h4>OWASP Top 10 Security Framework</h4>
+                    <div class="vulnerability-item">A01: Broken Access Control</div>
+                    <div class="vulnerability-item">A02: Cryptographic Failures</div>
+                    <div class="vulnerability-item">A03: Injection Attacks</div>
+                    <div class="vulnerability-item">A04: Insecure Design</div>
+                    <div class="vulnerability-item">A05: Security Misconfiguration</div>
+                    <div class="vulnerability-item">A06: Vulnerable Components</div>
+                    <div class="vulnerability-item">A07: Authentication Failures</div>
+                    <div class="vulnerability-item">A08: Software & Data Integrity</div>
+                    <div class="vulnerability-item">A09: Security Logging Failures</div>
+                    <div class="vulnerability-item">A10: Server-Side Request Forgery</div>
+                    <div class="owasp-note">
+                        This AI-powered scanner provides comprehensive coverage of all OWASP Top 10 vulnerabilities with
+                        advanced machine learning detection algorithms.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vulnerability Distribution Section -->
+            <div class="section" id="vulnerability-distribution">
+                <div class="card">
+                    <h3>Vulnerability Analysis Dashboard</h3>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalVulns">0</div>
+                            <div class="stat-label">Total Found</div>
+                        </div>
+                        <div class="stat-card interactive" id="highRiskCard">
+                            <div class="stat-number" id="highRisk" style="color: var(--danger-color);">0</div>
+                            <div class="stat-label">High Risk</div>
+                        </div>
+                        <div class="stat-card interactive" id="mediumRiskCard">
+                            <div class="stat-number" id="mediumRisk" style="color: var(--warning-color);">0</div>
+                            <div class="stat-label">Medium Risk</div>
+                        </div>
+                        <div class="stat-card interactive" id="lowRiskCard">
+                            <div class="stat-number" id="lowRisk" style="color: var(--success-color);">0</div>
+                            <div class="stat-label">Low Risk</div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 30px 0 15px 0;">Detailed Vulnerability Breakdown</h4>
+                    <div class="vulnerability-distribution" id="vulnerabilityChart">
+                        <div style="text-align: center; color: var(--text-muted);">
+                            <div style="font-size: 32px; margin-bottom: 15px;">📊</div>
+                            <div style="font-size: 16px; font-weight: 500;">No scan data available</div>
+                            <div style="font-size: 14px; margin-top: 8px;">Run a security scan to see vulnerability
+                                distribution</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Advanced Analytics</h4>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="pagesScanned">0</div>
+                            <div class="stat-label">Pages Scanned</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="requestsSent">0</div>
+                            <div class="stat-label">Requests Sent</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="scanTime">0s</div>
+                            <div class="stat-label">Scan Duration</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="riskScore">0%</div>
+                            <div class="stat-label">Risk Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-controls">
+            <button class="btn" id="aiAnalysis">AI Analysis</button>
+            <button class="btn" id="generatePlan">Mitigation Plan</button>
+            <button class="btn" id="predictVectors">Attack Vectors</button>
+            <button class="btn" id="saveReport">Save Report</button>
+            <button class="btn" id="exportConfig">Export Config</button>
+            <button class="btn" id="importConfig">Import Config</button>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-indicator"></div>
+            <span id="statusText">AI Security Scanner Ready</span>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="vulnModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Vulnerability Details</div>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Vulnerability details will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
