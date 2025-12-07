@@ -99,12 +99,14 @@ const aiModelSelect = document.getElementById('aiModel');
 const aiModels = {
     openai: [
         { value: 'gpt-4o', label: 'GPT-4o (Best)' },
+        { value: 'gpt-4o-mini', label: 'GPT-4o Mini (Fast & Cheap)' },
         { value: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-        { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo (Fast)' }
+        { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo' }
     ],
     gemini: [
+        { value: 'gemini-2.0-flash-exp', label: 'Gemini 2.0 Flash (New & Fast)' },
         { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro (Best)' },
-        { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash (Fast)' },
+        { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
         { value: 'gemini-pro', label: 'Gemini 1.0 Pro' }
     ]
 };
