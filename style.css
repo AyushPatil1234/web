@@ -275,10 +275,6 @@ body {
     transition: all 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
 .form-group {
     margin-bottom: 20px;
@@ -401,9 +397,6 @@ input[type="checkbox"] {
     transition: all 0.2s ease;
 }
 
-.owasp-list:hover {
-    transform: translateY(-1px);
-}
 
 .owasp-list h4 {
     margin-bottom: 16px;
@@ -674,10 +667,6 @@ h4 {
     transition: all 0.2s ease;
 }
 
-.stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
 
 .stat-card.interactive {
     cursor: pointer;
@@ -687,6 +676,8 @@ h4 {
 .stat-card.interactive:hover {
     background: var(--hover-color);
     border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stat-number {
