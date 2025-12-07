@@ -98,16 +98,22 @@ const aiModelSelect = document.getElementById('aiModel');
 
 const aiModels = {
     openai: [
-        { value: 'gpt-4o', label: 'GPT-4o (Best)' },
-        { value: 'gpt-4o-mini', label: 'GPT-4o Mini (Fast & Cheap)' },
-        { value: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-        { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo' }
+        { value: 'gpt-4o', label: 'GPT-4o (Flagship - Best Overall)' },
+        { value: 'gpt-4o-mini', label: 'GPT-4o Mini (Fast & Cost-Effective)' },
+        { value: 'o1-preview', label: 'o1-preview (Advanced Reasoning)' },
+        { value: 'o1-mini', label: 'o1-mini (Fast Reasoning)' },
+        { value: 'gpt-4-turbo', label: 'GPT-4 Turbo (High Capability)' },
+        { value: 'gpt-4', label: 'GPT-4 (Legacy)' },
+        { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo (Fast)' }
     ],
     gemini: [
-        { value: 'gemini-2.0-flash-exp', label: 'Gemini 2.0 Flash (New & Fast)' },
-        { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro (Best)' },
-        { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
-        { value: 'gemini-pro', label: 'Gemini 1.0 Pro' }
+        { value: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro (Advanced Reasoning)' },
+        { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (High Speed & Efficiency)' },
+        { value: 'gemini-2.0-flash-exp', label: 'Gemini 2.0 Flash (Experimental - Newest)' },
+        { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro (Best for Complex Tasks)' },
+        { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash (Fast & Versatile)' },
+        { value: 'gemini-1.5-flash-8b', label: 'Gemini 1.5 Flash-8B (High Volume)' },
+        { value: 'gemini-1.0-pro', label: 'Gemini 1.0 Pro (Standard)' }
     ]
 };
 
