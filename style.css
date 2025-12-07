@@ -507,6 +507,12 @@ input[type="checkbox"] {
     border: 1px solid var(--border-secondary);
     overflow-y: auto;
     max-height: 400px;
+    transition: all 0.3s ease;
+}
+
+.results-area.expanded {
+    max-height: 75vh;
+    min-height: 60vh;
 }
 
 .results-area::-webkit-scrollbar {

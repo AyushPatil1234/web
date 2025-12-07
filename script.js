@@ -18,7 +18,81 @@ themeToggle.addEventListener('click', () => {
     updateThemeToggleText(newTheme);
 });
 
-// AI Model Configuration
+// Window Controls Functionality
+const closeBtn = document.querySelector('.close');
+const minimizeBtn = document.querySelector('.minimize');
+const maximizeBtn = document.querySelector('.maximize');
+
+// Red Dot: Reset Scanner
+closeBtn.addEventListener('click', () => {
+    if (confirm('Are you sure you want to reset the scanner? This will clear all inputs and results.')) {
+        // Clear inputs
+        document.getElementById('targetUrl').value = 'http://testphp.vulnweb.com';
+        document.getElementById('loginUrl').value = '';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('proxyUrl').value = '';
+
+        // Clear results
+        document.getElementById('scanOutput').innerHTML = `AI-Powered Scanner Ready
+                                ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                                Enhanced Security Analysis Engine
+                                • Machine Learning-based vulnerability detection
+                                • Real-time threat assessment
+                                • Automated penetration testing
+                                • OWASP Top 10 compliance checking
+
+                                Ready to scan your target...
+                                Click "Start Scan" to begin comprehensive security analysis.`;
+
+        // Reset stats
+        updateStats(0, 0, 0, '0s', '0%', 0, 0, 0);
+
+        // Reset heatmap
+        document.getElementById('vulnerabilityChart').innerHTML = `
+            <div style="text-align: center; color: var(--text-muted);">
+                <div style="font-size: 32px; margin-bottom: 15px;">📊</div>
+                <div style="font-size: 16px; font-weight: 500;">No scan data available</div>
+                <div style="font-size: 14px; margin-top: 8px;">Run a security scan to see vulnerability distribution</div>
+            </div>
+        `;
+
+        allVulnerabilities = [];
+        showNotification('Scanner Reset', 'All settings and results have been cleared.');
+    }
+});
+
+// Yellow Dot: Compact Mode
+minimizeBtn.addEventListener('click', () => {
+    const settingsSection = document.querySelector('.section.active .card:first-child');
+    const resultsArea = document.getElementById('resultsArea');
+
+    if (settingsSection) {
+        if (settingsSection.style.display === 'none') {
+            settingsSection.style.display = 'block';
+            resultsArea.classList.remove('expanded');
+            minimizeBtn.title = 'Compact Mode';
+        } else {
+            settingsSection.style.display = 'none';
+            resultsArea.classList.add('expanded');
+            minimizeBtn.title = 'Restore View';
+        }
+    }
+});
+
+// Green Dot: Fullscreen
+maximizeBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.log(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+});
 const aiProviderSelect = document.getElementById('aiProvider');
 const aiModelSelect = document.getElementById('aiModel');
 
