@@ -108,14 +108,9 @@ body {
 .title-bar .icon {
     width: 24px;
     height: 24px;
-    background: var(--accent-color);
     border-radius: 6px;
     margin-right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
+    object-fit: contain;
 }
 
 .title-bar .title {
