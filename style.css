@@ -12,7 +12,7 @@
     --text-tertiary: #64748b;
     --text-quaternary: #94a3b8;
     --text-muted: #94a3b8;
-    --text-terminal: #10b981;
+    --text-terminal: #ef4444;
 
     --border-primary: #e2e8f0;
     --border-secondary: #cbd5e0;
@@ -42,7 +42,7 @@
     --text-tertiary: #94a3b8;
     --text-quaternary: #64748b;
     --text-muted: #64748b;
-    --text-terminal: #10b981;
+    --text-terminal: #ef4444;
 
     --border-primary: #334155;
     --border-secondary: #475569;
@@ -106,8 +106,8 @@ body {
 }
 
 .title-bar .icon {
-    width: 24px;
-    height: 24px;
+    width: 64px;
+    height: 64px;
     border-radius: 6px;
     margin-right: 12px;
     object-fit: contain;
@@ -512,7 +512,7 @@ input[type="checkbox"] {
 }
 
 .results-area::-webkit-scrollbar-thumb {
-    background: rgba(16, 185, 129, 0.3);
+    background: rgba(239, 68, 68, 0.3);
     border-radius: 3px;
 }
 

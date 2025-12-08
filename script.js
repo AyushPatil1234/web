@@ -333,12 +333,12 @@ function handleScanUpdate(data) {
 
 function logMessage(message, type = 'info') {
     const timestamp = new Date().toLocaleTimeString();
-    let color = '#10b981'; // success/info
+    let color = '#ef4444'; // success/info
     if (type === 'error') color = '#ef4444';
     if (type === 'warning') color = '#f59e0b';
 
     const logEntry = document.createElement('div');
-    logEntry.style.cssText = `color: ${color}; margin: 8px 0; padding: 8px 0; border-bottom: 1px solid rgba(16,185,129,0.2);`;
+    logEntry.style.cssText = `color: ${color}; margin: 8px 0; padding: 8px 0; border-bottom: 1px solid rgba(239,68,68,0.2);`;
 
     const timeSpan = document.createElement('span');
     timeSpan.style.color = '#f59e0b';
@@ -383,7 +383,7 @@ function completeScan(error = false) {
     if (!error) {
         const timestamp = new Date().toLocaleTimeString();
         scanOutput.innerHTML += `
-            <div style="color: #10b981; margin: 15px 0; padding: 15px; background: rgba(16,185,129,0.1); border-radius: 8px; border-left: 3px solid #10b981;">
+            <div style="color: #ef4444; margin: 15px 0; padding: 15px; background: rgba(239,68,68,0.1); border-radius: 8px; border-left: 3px solid #ef4444;">
                 <div style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">
                     [${timestamp}] Scan completed!
                 </div>
