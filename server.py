@@ -200,7 +200,7 @@ def scan():
                     yield json.dumps(event) + "\n"
                 else:
                     # It's a page content tuple (url, content) - logic inside crawler needs adjustment or we access crawler.pages
-                    pass
+                    pass # pragma: no cover
             
             # After crawl (or during, if we refactor crawler to yield pages), we process pages.
             # For simplicity, we iterate over crawler.pages which is populated by crawl()

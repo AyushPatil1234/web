@@ -701,3 +701,4 @@ function showNotification(title, message) {
 setTimeout(() => {
     showNotification('AI Scanner Ready', 'Advanced security scanning system initialized. Ready to protect your applications!');
 }, 1000);
+
